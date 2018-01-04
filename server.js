@@ -21,9 +21,9 @@ app.use((req, res, next) =>{
 });
 
 
-app.use((req, res, next) => {
-    res.render('maintenance.hbs');
-});
+// app.use((req, res, next) => {
+//     res.render('maintenance.hbs');
+// });
 
 app.use(express.static(__dirname + '/public'));
 
@@ -48,12 +48,19 @@ app.get('/', (req, res) =>{
     });
 });
 
+
+app.get('/projects', (req, res) =>{
+    res.render('projects.hbs', {
+        WelcomeMessage: 'Welcome to Project Page'        
+    });
+});
+
 app.get('/bad', (req, res) =>{
     res.send({errorMessage: 'Unable to fulfill this request'});
 });
 
 app.listen(port,() =>{
-    console.log(`Server is up on port 3000 ${port}`);
+    console.log(`Server is up on port ${port}`);
 });
 
 // test
